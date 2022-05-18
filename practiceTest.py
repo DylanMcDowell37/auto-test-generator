@@ -266,29 +266,34 @@ questions = [
                 B. The web server logs
                 C. The SIP traffic logs
                 D. The SNMP logs
-                  '''
- 
-       
- 
-]
+                  ''']
 answers = ["a", "a", "c", "c", "b", "b", "ad", "d", "a", "a", "a", "a", "c", "b", "a", "d", "a", "c", "c", "b", "d", "c", "bc", "b", "a", "b", "a", "a", "ab", "a", "b", "b", "b", "ad", "c", "a", "c", "b", "c", "a"]
 
+number = list(range(len(questions)))
 
-
-playing = input("Ready!(yes or no) ").lower()
+print("Welcome to the Quiz!")
+playing = input("Are you ready to begin?(yes or no) ").lower()
 if playing != "yes":
     quit()
 
 while True:
-    num = random.randint(0, 39)
-    print(questions[num])
-    answer = input("Answer: ").lower()
-    if answer == answers[num]:
-        print("Correct!")
-        continue
-    else: 
-        print("Incorrect the correct answer was:", answers[num].capitalize())
-        continue
+        score = 0
+        random.shuffle(number)
+        for i in range(len(questions)):
+                print(questions[number[i]])
+                answer = input("Answer: ").lower()
+                if answer == answers[number[i]]:
+                        print("Correct!")
+                        score += 1
+                        continue
+                else: 
+                        print("Incorrect the correct answer was:", answers[number[i]].capitalize())
+        print("You got", score, "out of", len(questions), "correct!")
+        playagain = input("Play again?(yes or no) ").lower()
+        if playagain != "yes":
+                quit()
+        else:
+                continue                
    
 
    
