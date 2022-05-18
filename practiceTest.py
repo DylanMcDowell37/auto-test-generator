@@ -1,5 +1,6 @@
 import random
- 
+
+#List of the questions and answers 
 questions = [
         '''(1) A security analyst needs to make a recommendation for restricting access to certain segments of the network using only data-link layer security. Which of the following controls will the analyst MOST likely recommend?
                 A. MAC
@@ -268,26 +269,30 @@ questions = [
                 D. The SNMP logs
                   ''']
 answers = ["a", "a", "c", "c", "b", "b", "ad", "d", "a", "a", "a", "a", "c", "b", "a", "d", "a", "c", "c", "b", "d", "c", "bc", "b", "a", "b", "a", "a", "ab", "a", "b", "b", "b", "ad", "c", "a", "c", "b", "c", "a"]
-
+#List of numbers from 0  to the length of the question list
 number = list(range(len(questions)))
-
+#Welcome message to the user with the option to start the quiz
 print("Welcome to the Quiz!")
 playing = input("Are you ready to begin?(yes or no) ").lower()
 if playing != "yes":
     quit()
 
 while True:
+        #Randomly shuffle the list of numbers and set score to 0
         score = 0
         random.shuffle(number)
+        #Loop through the list of the shuffled numbers and print the question at the index of the number
         for i in range(len(questions)):
                 print(questions[number[i]])
                 answer = input("Answer: ").lower()
+                #compare the answer to the correct answer and add 1 to the score if the answer is correct
                 if answer == answers[number[i]]:
                         print("Correct!")
                         score += 1
                         continue
                 else: 
                         print("Incorrect the correct answer was:", answers[number[i]].capitalize())
+        #Print the score and ask the user if they want to play again
         print("You got", score, "out of", len(questions), "correct!")
         playagain = input("Play again?(yes or no) ").lower()
         if playagain != "yes":
